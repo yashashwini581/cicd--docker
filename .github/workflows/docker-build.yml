@@ -26,7 +26,15 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./backend       # folder containing Dockerfile
+          file: ./backend/Dockerfile
           push: true
-          tags: yashu123/my-app:latest
+          tags: yashu123/backend:latest
 
+      - name: Build and push frontend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile
+          push: true
+          tags: yashu123/frontend:latest
